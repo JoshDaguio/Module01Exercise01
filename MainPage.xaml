@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Module01Exercise01"
+             x:Class="Module01Exercise01.MainPage"
+             BackgroundColor="{DynamicResource LocalBackgroundColor}">
+
+    <ContentPage.Resources>
+        <x:String x:Key="StaticTitle">Profile</x:String>
+        <x:String x:Key="DynamicName">Please Enter Your Name</x:String>
+        <x:String x:Key="DynamicEmail">Please Enter Your Email</x:String>
+        <x:String x:Key="DynamicBio">Your Bio</x:String>
+        <x:String x:Key="DynamicDateOfBirth">Select Date of Birth</x:String>
+        <x:String x:Key="DynamicSubmissionMessage">Submission In Progress</x:String>
+
+        <Color x:Key="DynamicSubmitButton">Black</Color>
+        <Color x:Key="DynamicSubmitButtonText">White</Color>
+
+        <Color x:Key="LocalBackgroundColor">Gray</Color>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label Text="{local:WelcomeMessage}"
+                   HorizontalOptions="Center"/>
+
+            <Label x:Name="StaticResourceLabel" 
+                   Text="{StaticResource StaticTitle}"
+                   HorizontalOptions="Center"/>
+
+            <Label x:Name="DynamicNameEntry"
+                   Text="{DynamicResource DynamicName}"
+                   VerticalOptions="Center"/>
+
+            <Label x:Name="DynamicEmailEntry"
+                   Text="{DynamicResource DynamicEmail}"
+                   VerticalOptions="Center"/>
+
+            <Label x:Name="DynamicDateOfBirthEntry"
+                   Text="{DynamicResource DynamicDateOfBirth}"
+                   VerticalOptions="Center"/>
+
+            <Label x:Name="DynamicBioEntry"
+                   Text="{DynamicResource DynamicBio}"
+                   VerticalOptions="Center"/>
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Enter Name"
+                   PlaceholderColor="White"
+                   TextChanged="OnNameEntryTextChanged"/>
+
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Enter Email"
+                   PlaceholderColor="White"
+                   TextChanged="OnEmailEntryTextChanged"/>
+
+            <DatePicker x:Name="BirthDatePicker"
+                        HorizontalOptions="Center"
+                        DateSelected="OnDatePickerDateSelected"/>
+
+            <Editor x:Name="BioEntry"
+                    Placeholder="Add Bio"
+                    HeightRequest="150"
+                    PlaceholderColor="White"
+                    TextChanged="OnBioEntryTextChanged"/>
+
+            <Label x:Name="DynamicSubmit" 
+                   Text="{DynamicResource DynamicSubmissionMessage}"
+                   HorizontalOptions="Center"/>
+
+            <Button Text="Submit"
+                    Clicked="OnSubmitClicked"
+                    BackgroundColor="{DynamicResource DynamicSubmitButton}"
+                    TextColor="{DynamicResource DynamicSubmitButtonText}"
+                    HorizontalOptions="Fill"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Plain Mode"
+                    Clicked="OnClickedDarkMode"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Margin="5"/>
+                <Button Text="Color Mode"
+                    Clicked="OnClickedLightMode"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    Margin="5"/>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
